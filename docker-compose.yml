@@ -7,10 +7,12 @@ services:
       dockerfile: ./.docker/server/Dockerfile
     ports:
       - "8000:8000"
+      - "3000:3000"
     networks:
       - test_entretien
     volumes:
       - ./lib:/app/lib
+      - ./views:/app/views
 
 networks:
   test_entretien:
