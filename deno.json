@@ -1,6 +1,8 @@
 {
   "tasks": {
-    "dev": "deno run -A --node-modules-dir=auto npm:vite --host"
+    "dev": "deno task dev:api & deno task dev:vite",
+    "dev:api": "deno run --allow-net --allow-read --watch lib/main.ts",
+    "dev:vite": "deno run -A --node-modules-dir=auto npm:vite --host"
   },
   "imports": {
     "@deno/vite-plugin": "npm:@deno/vite-plugin@^1.0.0",
