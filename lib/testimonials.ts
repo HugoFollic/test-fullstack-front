@@ -12,7 +12,8 @@ interface ITestimonial {
 }
 
 export function getThreeTopTestimonials(testimonials: ITestimonial[]) {
-    return testimonials.slice(0, 3);
+  const sortedTestimonials = [...testimonials].sort((a, b) => b.rating - a.rating);
+  return sortedTestimonials.slice(0, 3);
 }
 
 export const testimonials: ITestimonial[] = [
@@ -20,7 +21,7 @@ export const testimonials: ITestimonial[] = [
       id: 1,
       personName: "Jane Roe",
       personCompany: "InnovateX",
-      personPicture: "https://picsum.photos/200/200?random=${id}",
+      personPicture: `https://picsum.photos/200/200?random=${Math.floor(Math.random() * 1000)}`,
       title: "Highly Recommend",
       body: "I had an excellent experience working with this team.",
       rating: 4
@@ -29,7 +30,7 @@ export const testimonials: ITestimonial[] = [
       id: 2,
       personName: "Alice Smith",
       personCompany: "EcoFuture",
-      personPicture: "https://picsum.photos/200/200?random=${id}",
+      personPicture: `https://picsum.photos/200/200?random=${Math.floor(Math.random() * 1000)}`,
       title: "Great Service!",
       body: "The service provided was outstanding and exceeded my expectations.",
       rating: 5
@@ -38,7 +39,7 @@ export const testimonials: ITestimonial[] = [
       id: 3,
       personName: "Alice Smith",
       personCompany: "EcoFuture",
-      personPicture: "https://picsum.photos/200/200?random=${id}",
+      personPicture: `https://picsum.photos/200/200?random=${Math.floor(Math.random() * 1000)}`,
       title: "Great Service!",
       body: "Their professionalism and dedication truly stand out.",
       rating: 3
@@ -47,7 +48,7 @@ export const testimonials: ITestimonial[] = [
       id: 4,
       personName: "Emily Brown",
       personCompany: "DesignHub",
-      personPicture: "https://picsum.photos/200/200?random=${id}",
+      personPicture: `https://picsum.photos/200/200?random=${Math.floor(Math.random() * 1000)}`,
       title: "Top Quality",
       body: "The service provided was outstanding and exceeded my expectations.",
       rating: 1
@@ -56,7 +57,7 @@ export const testimonials: ITestimonial[] = [
       id: 5,
       personName: "John Doe",
       personCompany: "InnovateX",
-      personPicture: "https://picsum.photos/200/200?random=${id}",
+      personPicture: `https://picsum.photos/200/200?random=${Math.floor(Math.random() * 1000)}`,
       title: "Highly Recommend",
       body: "Top-notch service with great attention to detail.",
       rating: 1

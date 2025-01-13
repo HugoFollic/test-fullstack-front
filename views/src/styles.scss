@@ -194,6 +194,10 @@ nav {
           font-size: 0.875rem;
           text-align: center;
         }
+
+        .rating {
+          text-align: center;
+        }
       }
 
       .client {
@@ -205,6 +209,7 @@ nav {
         img {
           width: 3.5rem;
           height: 3.5rem;
+          border-radius: 50%;
         }
 
         .client-info {

@@ -1,26 +1,29 @@
-import { serve } from "../deps.ts";
-import { renderFile } from "../deps.ts";
+import { getThreeTopTestimonials, testimonials } from "./testimonials.ts";
 
 async function handler(req: { url: string | URL; }) {
   const url = new URL(req.url);
 
-  if (url.pathname === "/") {
+  if (url.pathname === "/api/testimonials/top") {
     try {
-      const body = await renderFile("views/index.html");
-      return new Response(body, {
-        headers: { "Content-Type": "text/html" },
+      const topTestimonials = getThreeTopTestimonials(testimonials);
+      return new Response(JSON.stringify(topTestimonials), {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
         status: 200,
       });
     } catch (error) {
-      console.error("Erreur de rendu EJS :", error);
-      return new Response("Erreur interne du serveur", { status: 500 });
+      console.error("Error fetching testimonials:", error);
+      return new Response(JSON.stringify({error: "Internal server error"}), {
+        headers: {"Content-Type": "application/json"},
+        status: 500
+      });
     }
   }
 
-  // Implémenter la requête api "/api/testimonials/top"
-
-  return new Response("Page non trouvée", { status: 404 });
+  return new Response("Page not found", { status: 404 });
 }
 
-console.log(`🚀 Serveur Deno en cours d'exécution : http://localhost:8000`);
+console.log(`🚀 Deno server running : http://localhost:8000`);
 Deno.serve(handler);
