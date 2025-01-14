@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import deno from "@deno/vite-plugin";
+import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
   root: "./views",
@@ -8,5 +9,6 @@ export default defineConfig({
   },
   plugins: [
     deno(),
+    vue(),
   ],
 });

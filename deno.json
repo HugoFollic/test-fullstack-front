@@ -7,7 +7,9 @@
   "imports": {
     "@deno/vite-plugin": "npm:@deno/vite-plugin@^1.0.0",
     "vite": "npm:vite@^5.4.11",
+    "@vitejs/plugin-vue": "npm:@vitejs/plugin-vue@^5.2.1",
+    "vue": "npm:vue@^3.5.13",
     "@std/assert": "jsr:@std/assert@1",
-    "sass": "npm:sass@^"
+    "sass": "npm:sass@^1.83.1"
   }
 }
