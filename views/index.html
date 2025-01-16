@@ -9,16 +9,24 @@
 <body>
   <nav>
     <ul>
-      <li><img src="logo.svg" alt="Landify's logo"></li>
-      <li>Features</li>
-      <li>Pricing</li>
-      <li>Careers</li>
-      <li>Help</li>
+      <li><a href="/"><img src="logo.svg" alt="Landify's logo"></a></li>
+      <li><a href="/">Features</a></li>
+      <li><a href="/">Pricing</a></li>
+      <li><a href="/">Careers</a></li>
+      <li><a href="/">Help</a></li>
     </ul>
     <ul>
-      <li><img src="play-store.svg" alt="Play Store's logo"></li>
-      <li><img src="app-store.svg" alt="App Store's logo"></li>
+      <li><a href="/"><img src="play-store.svg" alt="Play Store's logo"></a></li>
+      <li><a href="/"><img src="app-store.svg" alt="App Store's logo"></a></li>
     </ul>
+    <button onclick="this.firstElementChild.classList.toggle('active')">
+      <span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+
+    </button>
   </nav>
 
   <div class="modal">
@@ -47,8 +55,8 @@
         <h2>From the small stuff to the big picture, organizes the work so teams know what to do, why it matters, and how to get it done.</h2>
       </div>
       <div class="cta">
-        <button>Get Started</button>
-        <button><img src="watch.svg" alt="Watch video icon"/>Watch Video</button>
+        <button><a href="/">Get Started</a></button>
+        <button><a href="/"><img src="watch.svg" alt="Watch video icon"/>Watch Video</a></button>
       </div>
     </div>
     <div class="mockup">
@@ -57,8 +65,10 @@
   </div>
 
   <div class="testimonials">
-    <h1>Our clients speak</h1>
-    <div class="testimonial-cards" id="testimonial-container"></div>
+    <div class="testimonial-content">
+      <h1>Our clients speak</h1>
+      <div class="testimonial-cards" id="testimonial-container"></div>
+    </div>
   </div>
 
   <div class="companies">
@@ -82,10 +92,10 @@
   <div class="footer">
     <span>© 2021 Landify UI Kit. All rights reserved</span>
     <ul>
-      <li><img src="instagram.svg" alt="Instagram's logo"></li>
-      <li><img src="dribbble.svg" alt="Dribbble's logo"></li>
-      <li><img src="twitter.svg" alt="Twitter's logo"></li>
-      <li><img src="youtube.svg" alt="Youtube's logo"></li>
+      <li><a href="/"><img src="instagram.svg" alt="Instagram's logo"></a></li>
+      <li><a href="/"><img src="dribbble.svg" alt="Dribbble's logo"></a></li>
+      <li><a href="/"><img src="twitter.svg" alt="Twitter's logo"></a></li>
+      <li><a href="/"><img src="youtube.svg" alt="Youtube's logo"></a></li>
     </ul>
   </div>
   <script type="module" src="src/main.ts"></script>

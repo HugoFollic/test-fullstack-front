@@ -7,8 +7,10 @@ nav {
   align-items: center;
   justify-content: space-between;
   height: 5rem;
-  margin-right: 2rem;
-  margin-left: 2rem;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 
   ul {
     padding: 0;
@@ -20,6 +22,10 @@ nav {
     &:first-child {
       gap: 0.25rem;
 
+      li:not(:first-child) {
+        display: none;
+      }
+
       li:first-child {
         margin-right: 2rem;
       }
@@ -30,12 +36,55 @@ nav {
         font-family: "Inter Semi Bold", sans-serif;
         font-weight: 600;
         font-size: 0.9rem;
-        color: hsla(221, 39%, 11%, 1);
+
+        a {
+          outline: none;
+          text-decoration: none;
+          color: hsla(221, 39%, 11%, 1);
+        }
       }
     }
 
-    &:last-child {
+    &:nth-child(2) {
       gap: 0.75rem;
+      display: none;
+    }
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    display: inline-block;
+    height: unset;
+    min-width: unset;
+    cursor: pointer;
+
+    span {
+      align-items: center;
+      display: grid;
+
+      span {
+        width: 1.5rem;
+        height: 0;
+        border: 1px solid hsla(221, 39%, 11%, 1);
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      &.active {
+        span:nth-child(1) {
+          transform: translateY(0.625rem) rotate(-45deg);
+        }
+
+        span:nth-child(2) {
+          opacity: 0;
+        }
+
+        span:nth-child(3) {
+          transform: translateY(-0.625rem) rotate(45deg);
+        }
+      }
     }
   }
 }
@@ -131,18 +180,18 @@ nav {
 .hero {
   display: flex;
   gap: 2rem;
-  flex-direction: row;
-  margin-top: 4.5rem;
-  margin-right: 2rem;
-  margin-left: 2rem;
+  flex-direction: column;
+  margin: 4.5rem auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  align-items: center;
 
   .content {
     max-width: 43.5rem;
-    padding-top: 6rem;
-    padding-right: 3rem;
     display: flex;
     gap: 2rem;
     flex-direction: column;
+    text-align: center;
 
     .header {
       display: flex;
@@ -171,12 +220,17 @@ nav {
       display: flex;
       gap: 1rem;
       flex-direction: row;
+      margin: auto;
 
       button:first-of-type {
+        a {
+          outline: none;
+          text-decoration: none;
+          color: hsla(0, 0%, 100%, 1);
+        }
         background-color: hsla(262, 83%, 58%, 1);
         border-radius: 0.5rem;
         border: 0;
-        color: hsla(0, 0%, 100%, 1);
         padding: 1rem 1.5rem;
         font-family: "Inter Semi Bold", sans-serif;
         font-weight: 600;
@@ -184,27 +238,35 @@ nav {
       }
 
       button:last-of-type {
-        display: flex;
-        gap: 0.5rem;
-        align-items: center;
         background-color: transparent;
         border: 0;
-        color: hsla(262, 83%, 58%, 1);
         padding: 1rem 1.5rem;
         font-family: "Inter Semi Bold", sans-serif;
         font-weight: 600;
         font-size: 1rem;
         vertical-align: middle;
 
-        img {
-          height: 1.25rem;
-          padding: 0.125rem;
+        a {
+          display: flex;
+          gap: 0.5rem;
+          align-items: center;
+          outline: none;
+          text-decoration: none;
+          color: hsla(262, 83%, 58%, 1);
+
+          img {
+            height: 1.25rem;
+            padding: 0.125rem;
+          }
         }
       }
     }
   }
 
   .mockup {
+
+    padding-right: 5.25rem;
+    padding-left: 5.25rem;
 
     img {
       height: 40rem;
@@ -213,116 +275,143 @@ nav {
 }
 
 .testimonials {
-  display: flex;
-  flex-direction: column;
+
   background-color: hsla(0, 0%, 95%, 1);
-  height: 35.25rem;
+  display: flex;
+  justify-content: center;
+  padding-top: 3.3125rem;
+  padding-bottom: 3.3125rem;
 
-  h1 {
-    font-family: "Inter", sans-serif;
-    font-weight: 700;
-    font-size: 2.5rem;
-    color: hsla(221, 39%, 11%, 1);
-    letter-spacing: -0.025em;
-    text-align: center;
-    height: 4.5rem;
-    align-items: center;
-    justify-content: center;
+  .testimonial-content {
     display: flex;
-    margin-top: 3.3125rem;
-    margin-bottom: 2.8125rem;
+    flex-direction: column;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    width: 100%;
 
-  }
+    h1 {
+      font-family: "Inter", sans-serif;
+      font-weight: 700;
+      font-size: 2.5rem;
+      color: hsla(221, 39%, 11%, 1);
+      letter-spacing: -0.025em;
+      text-align: center;
+      height: 4.5rem;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      margin-top: 0;
+      margin-bottom: 2.8125rem;
 
-  .testimonial-cards {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 1rem;
+    }
 
-    .testimonial-card {
+    .testimonial-cards {
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
+      justify-content: space-between;
 
-      .testimonial {
+      .testimonial-card {
         display: flex;
         flex-direction: column;
-        gap: 0.5rem;
-        padding: 2.5rem 2rem;
-        background-color: hsla(0, 0%, 100%, 1);
-        border-radius: 0.623rem;
-        position: relative;
-        max-width: 20rem;
-
-        &::after {
-          top: 100%;
-          left: 50%;
-          content: "";
-          height: 0;
-          width: 0;
-          position: absolute;
-          border: 1rem solid transparent;
-          border-top-color: hsla(0, 0%, 100%, 1);
-          margin-left: -1rem;
-        }
-
-        h2 {
-          margin: 0;
-          font-family: "Inter Bold", sans-serif;
-          font-weight: 700;
-          font-size: 1.5rem;
-          text-align: center;
-        }
-
-        span {
-          color: hsla(221, 39%, 11%, 1);
-          font-family: "Inter", sans-serif;
-          font-weight: 400;
-          font-size: 0.875rem;
-          text-align: center;
-        }
-
-        .rating {
-          text-align: center;
-        }
-      }
-
-      .client {
-        display: flex;
-        flex-direction: column;
+        gap: 2rem;
         align-items: center;
-        gap: 0.5rem;
 
-        img {
-          width: 3.5rem;
-          height: 3.5rem;
-          border-radius: 50%;
+
+        .testimonial {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          padding: 2.5rem 2rem;
+          background-color: hsla(0, 0%, 100%, 1);
+          border-radius: 0.623rem;
+          position: relative;
+          max-width: 20rem;
+          box-shadow: 0 4px 8px hsla(221, 39%, 11%, 0.06);
+
+          &::after {
+            top: 91%;
+            left: 47%;
+            z-index: 2;
+            content: "";
+            height: 1.75rem;
+            width: 1.5rem;
+            position: absolute;
+            transform: rotate(45deg);
+            margin: auto 0;
+            clip-path: polygon(
+              100% 2%,
+              2% 100%,
+              100% 100%
+            );
+            border-radius: 0 0 3px 0;
+            background: hsla(0, 0%, 100%, 1);
+          }
+
+          h2 {
+            margin: 0;
+            font-family: "Inter Bold", sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-align: center;
+          }
+
+          span {
+            color: hsla(221, 39%, 11%, 1);
+            font-family: "Inter", sans-serif;
+            font-weight: 400;
+            font-size: 0.875rem;
+            text-align: center;
+          }
+
+          .rating {
+            text-align: center;
+          }
         }
 
-        .client-info {
+        .client {
           display: flex;
           flex-direction: column;
           align-items: center;
-          span {
-            &:first-of-type {
-              height: 1.75rem;
-              font-family: "Inter Bold", sans-serif;
-              font-weight: 700;
-              font-size: 1.125rem;
-              color: hsla(221, 39%, 11%, 1);
-            }
+          gap: 0.5rem;
 
-            &:last-of-type {
-              height: 1.25rem;
-              font-family: "Inter", sans-serif;
-              font-weight: 400;
-              font-size: 0.875rem;
-              color: hsla(217, 19%, 27%, 1);
+          img {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+          }
+
+          .client-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            span {
+              &:first-of-type {
+                height: 1.75rem;
+                font-family: "Inter Bold", sans-serif;
+                font-weight: 700;
+                font-size: 1.125rem;
+                color: hsla(221, 39%, 11%, 1);
+              }
+
+              &:last-of-type {
+                height: 1.25rem;
+                font-family: "Inter", sans-serif;
+                font-weight: 400;
+                font-size: 0.875rem;
+                color: hsla(217, 19%, 27%, 1);
+              }
             }
           }
         }
       }
+    }
+
+    .testimonial-cards > * {
+      margin-bottom: 1rem
+    }
+
+    .testimonial-cards > *:last-child {
+      margin-bottom: 0;
     }
   }
 }
@@ -330,16 +419,19 @@ nav {
 .companies {
   min-height: 22rem;
   background-color: hsla(0, 0%, 100%, 1);
-  padding: 5.9375rem 12.875rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(176px, 1fr));
+  margin: 3rem auto ;
+  max-width: 63rem;
+  display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
 
   img {
     height: 6rem;
     width: 11rem;
     object-fit: none;
     box-sizing: border-box;
+    place-self: center;
   }
 }
 
@@ -348,7 +440,9 @@ nav {
   align-items: center;
   justify-content: space-between;
   background-color: hsla(0, 0%, 0%, 1);
-  padding: 2rem 7rem;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 2rem 1.25rem;
 
   span {
     color: hsla(216, 12%, 84%, 1);
@@ -373,5 +467,128 @@ nav {
       justify-content: center;
       align-items: center;
     }
+  }
+}
+
+@media (min-width: 640px) {
+  nav {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .hero {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .footer {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 1024px) {
+  nav {
+    ul {
+      &:first-child {
+        li:not(:first-child) {
+          display: block;
+        }
+      }
+
+      &:nth-child(2) {
+        display: flex;
+      }
+    }
+    button {
+      display: none;
+    }
+  }
+  .hero {
+    flex-direction: row;
+    align-items: normal;
+
+    .content {
+      padding-top: 6rem;
+      padding-right: 3rem;
+      text-align: left;
+
+      .cta {
+        margin: 0;
+      }
+    }
+  }
+
+  .testimonials {
+    .testimonial-content {
+      .testimonial-cards {
+        flex-direction: row;
+      }
+
+      .testimonial-cards > * {
+        margin-bottom: 0;
+        margin-left: min(0.5rem, var(--available-space, 0.5rem));
+        margin-right: min(0.5rem, var(--available-space, 0.5rem));
+      }
+
+      .testimonial-cards > *:first-child {
+        margin-left: 0;
+      }
+
+      .testimonial-cards > *:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .companies {
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+  }
+
+}
+
+@media (min-width: 1280px) {
+  nav {
+    max-width: 1280px;
+  }
+
+  .hero {
+    max-width: 1280px;
+  }
+
+  .testimonials {
+
+    .testimonial-content {
+      max-width: 1280px;
+    }
+  }
+
+  .footer {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  nav {
+    max-width: 1536px;
+    padding-left: 7rem;
+    padding-right: 7rem;
+  }
+
+  .hero {
+    max-width: 1536px;
+    padding-left: 7rem;
+    padding-right: 7rem;
+  }
+
+  .footer {
+    max-width: 1536px;
+    padding-left: 7rem;
+    padding-right: 7rem;
   }
 }
