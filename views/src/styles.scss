@@ -11,6 +11,16 @@ nav {
   margin-left: auto;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  background-color: hsla(217, 100%, 97%, 1);
+  z-index: 100;
+  transition: box-shadow 0.3s ease;
+
+  &.shadow {
+    box-shadow: 0 4px 6px -1px hsla(0, 0%, 0%, 0.05);
+  }
 
   ul {
     padding: 0;
@@ -172,8 +182,6 @@ nav {
         }
       }
     }
-
-
   }
 }
 
@@ -263,6 +271,81 @@ nav {
     }
   }
 
+  .background {
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-color: hsla(217, 100%, 97%, 0.7);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transform: skewY(-6deg);
+    transform-origin: 0;
+
+    .circle-blue {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: #2EC5CE;
+      opacity: .6;
+      filter: blur(100px);
+      right: 30%;
+      bottom: 4em;
+    }
+
+    .circle-violet {
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      background-color: hsla(262, 83%, 58%, 1);
+      filter: blur(100px);
+      opacity: .3;
+      border-radius: 100%;
+      top: 150px;
+      right: 0px;
+      margin-top: 75px;
+    }
+
+    .line {
+      position: absolute;
+      height: 4em;
+    }
+
+    .top-left {
+      background-color: hsla(184, 74%, 69%, 1);;
+      width: 33%;
+      bottom: 0;
+    }
+
+    .bottom-left {
+      background-color: hsla(251, 91%, 95%, 1);
+      width: 20%;
+      bottom: -4em;
+    }
+
+    .top-right {
+      background-color: hsla(251, 91%, 95%, 1);
+      width: 25%;
+      right: 32px;
+      bottom: 4em;
+    }
+
+    .middle-right {
+      background-color: hsla(252, 95%, 85%, 1);
+      width: 40%;
+      right: 0;
+      bottom: 0;
+    }
+
+    .bottom-right {
+      position: absolute;
+      background-color: hsla(184, 74%, 69%, 1);
+      width: 12%;
+      bottom: -4em;
+      right: 0;
+    }
+  }
+
   .mockup {
 
     padding-right: 5.25rem;
@@ -316,6 +399,16 @@ nav {
         gap: 2rem;
         align-items: center;
 
+        opacity: 0;
+        animation: fadeInUp 0.75s ease-out forwards; /* Add the fade-in animation */
+
+        /* Optional delay for each card */
+        animation-delay: calc(0.2s * var(--i));
+
+        &.animate {
+          opacity: 1;
+          animation: fadeInUp 0.75s ease-out forwards;
+        }
 
         .testimonial {
           display: flex;
@@ -514,7 +607,6 @@ nav {
 
     .content {
       padding-top: 6rem;
-      padding-right: 3rem;
       text-align: left;
 
       .cta {
@@ -559,6 +651,10 @@ nav {
 
   .hero {
     max-width: 1280px;
+
+    .content {
+      padding-right: 3rem;
+    }
   }
 
   .testimonials {
@@ -590,5 +686,16 @@ nav {
     max-width: 1536px;
     padding-left: 7rem;
     padding-right: 7rem;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
