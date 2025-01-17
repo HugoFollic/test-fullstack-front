@@ -89,3 +89,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+//Handle cards animation
+document.addEventListener("scroll" || "mousemove", () => {
+  const testimonialCards = document.querySelectorAll('.testimonial-card');
+
+  console.log(testimonialCards)
+
+  if (!testimonialCards) return;
+
+  // Create an IntersectionObserver
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.75
+  });
+
+  testimonialCards.forEach(card => {
+    observer.observe(card);
+  });
+});

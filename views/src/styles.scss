@@ -500,9 +500,15 @@ nav {
         flex-direction: column;
         gap: 2rem;
         align-items: center;
-
         opacity: 0;
-        animation: fadeInUp 0.75s ease-out forwards;
+        visibility: hidden;
+
+        &.visible {
+          opacity: 1;
+          visibility: visible;
+          animation: fadeInUp 0.75s ease-out forwards;
+
+        }
 
         .testimonial {
           display: flex;
