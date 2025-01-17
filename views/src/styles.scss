@@ -6,20 +6,66 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 5rem;
+  height: fit-content;
   margin-right: auto;
   margin-left: auto;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  position: sticky;
+  padding: 1.375rem 1.25rem;
+  position: absolute;
+  inset: 0;
   top: 0;
-  overflow: hidden;
   background-color: hsla(217, 100%, 97%, 1);
   z-index: 100;
   transition: box-shadow 0.3s ease;
 
   &.shadow {
     box-shadow: 0 4px 6px -1px hsla(0, 0%, 0%, 0.05);
+  }
+
+  &.menu-open {
+    min-height: 10rem;
+    background-color: hsla(217, 100%, 97%, 1);
+    box-shadow: 0 4px 6px -1px hsla(0, 0%, 0%, 0.05);
+
+    & + .backdrop {
+      display: block;
+    }
+
+    ul {
+      display: inline-block;
+      align-self: baseline;
+      position: relative; // Ensures menu stays above backdrop
+      z-index: 1;
+    }
+
+    ul:first-child {
+      flex-direction: column;
+      align-items: center;
+
+      li:not(:first-child) {
+        display: block;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInDown 0.3s ease forwards;
+        padding-left: 0;
+        padding-top: 0.5rem;
+        font-size: 1.2rem;
+
+
+        @for $i from 1 through 4 {
+          &:nth-child(#{$i + 1}) {
+            animation-delay: #{$i * 0.1}s;
+          }
+        }
+      }
+
+      li:first-child {
+        margin-right: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0;
+      }
+    }
   }
 
   ul {
@@ -68,6 +114,7 @@ nav {
     height: unset;
     min-width: unset;
     cursor: pointer;
+    align-self: flex-start;
 
     span {
       align-items: center;
@@ -97,6 +144,17 @@ nav {
       }
     }
   }
+}
+.backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2px);
+  z-index: 50;
 }
 
 .modal {
@@ -189,7 +247,7 @@ nav {
   display: flex;
   gap: 2rem;
   flex-direction: column;
-  margin: 4.5rem auto;
+  margin: 7rem auto 4.5rem auto;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   align-items: center;
@@ -275,7 +333,7 @@ nav {
     top: 0;
     left: 0;
     position: absolute;
-    background-color: hsla(217, 100%, 97%, 0.7);
+    background-color: hsla(217, 100%, 97%, 1);
     width: 100%;
     height: 100%;
     z-index: -1;
@@ -302,8 +360,9 @@ nav {
       opacity: .3;
       border-radius: 100%;
       top: 150px;
-      right: 0px;
+      right: 0;
       margin-top: 75px;
+      display: none;
     }
 
     .line {
@@ -353,6 +412,7 @@ nav {
 
     img {
       height: 40rem;
+      filter: drop-shadow(10px 15px 30px rgba(41, 41, 42, .5));
     }
   }
 }
@@ -586,6 +646,7 @@ nav {
 
 @media (min-width: 1024px) {
   nav {
+    position: fixed;
     ul {
       &:first-child {
         li:not(:first-child) {
@@ -604,6 +665,14 @@ nav {
   .hero {
     flex-direction: row;
     align-items: normal;
+    margin: 9.5rem auto 4.5rem auto;
+
+    .background {
+
+      .circle-violet {
+        display: block;
+      }
+    }
 
     .content {
       padding-top: 6rem;
@@ -693,6 +762,17 @@ nav {
   0% {
     opacity: 0;
     transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
   }
   100% {
     opacity: 1;
