@@ -13,7 +13,6 @@ const fetchTestimonials = async () => {
 
   try {
     const response = await fetch('http://0.0.0.0:8000/api/testimonials/top');
-
     testimonials.value = await response.json();
   } catch (e) {
     error.value = e instanceof Error ? e.message : 'Failed to load testimonials';
@@ -23,18 +22,17 @@ const fetchTestimonials = async () => {
   }
 };
 
-onMounted(fetchTestimonials);
-
+onMounted(() => {
+  fetchTestimonials();
+});
 </script>
 
 <template>
-  <div v-if="isLoading">Loading...</div>
+  <div v-if="isLoading" class="spinner"></div>
   <div v-else-if="error">{{ error }}</div>
   <TestimonialCard
-      v-else-if="testimonials.length"
       v-for="testimonial in testimonials"
       :key="testimonial.id"
       :testimonial="testimonial"
-    />
-  <p v-else>Unable to load testimonials at this time.</p>
+  />
 </template>

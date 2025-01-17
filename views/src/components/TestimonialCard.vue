@@ -2,7 +2,7 @@
 import { Testimonial } from "../types";
 
 const props = defineProps<{
-  testimonial: Testimonial
+  testimonial: Testimonial,
 }>();
 
 const createStarRating = (rating: number) => {

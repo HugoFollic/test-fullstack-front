@@ -165,6 +165,11 @@ nav {
   background-color: hsla(54, 100%, 50%, 1);
   padding: 2rem;
   flex-direction: column;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
 
   .modal-header {
     display: flex;
@@ -241,6 +246,18 @@ nav {
       }
     }
   }
+
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 998;
 }
 
 .hero {
@@ -431,6 +448,7 @@ nav {
     padding-right: 1rem;
     padding-left: 1rem;
     width: 100%;
+    align-items: center;
 
     h1 {
       font-family: "Inter", sans-serif;
@@ -445,13 +463,37 @@ nav {
       display: flex;
       margin-top: 0;
       margin-bottom: 2.8125rem;
+    }
 
+    .spinner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 3rem;
+      height: 3rem;
+      border: 0.3rem solid hsla(0, 0%, 85%, 1);
+      border-top: 0.3rem solid hsla(221, 39%, 11%, 1);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
     }
 
     .testimonial-cards {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+
+
+      .testimonial-card:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .testimonial-card:nth-child(2) {
+        animation-delay: 0.5s;
+      }
+
+      .testimonial-card:nth-child(3) {
+        animation-delay: 1s;
+      }
 
       .testimonial-card {
         display: flex;
@@ -460,15 +502,7 @@ nav {
         align-items: center;
 
         opacity: 0;
-        animation: fadeInUp 0.75s ease-out forwards; /* Add the fade-in animation */
-
-        /* Optional delay for each card */
-        animation-delay: calc(0.2s * var(--i));
-
-        &.animate {
-          opacity: 1;
-          animation: fadeInUp 0.75s ease-out forwards;
-        }
+        animation: fadeInUp 0.75s ease-out forwards;
 
         .testimonial {
           display: flex;
@@ -777,5 +811,14 @@ nav {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
