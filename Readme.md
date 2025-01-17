@@ -6,6 +6,8 @@ Veuillez utiliser la commande `make setup` pour installer le projet.
 
 Vous pouvez utiliser la commande `make up` pour lancer le site
 
+En local le site est accessible ici : http://localhost:3000
+
 ## FAQ
 
 ### J'ai installé une dépendance mais deno dit que c'est pas installé
